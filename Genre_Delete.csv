@@ -1,0 +1,400 @@
+Genre,Count,Replacement
+2 Tone,1,Null
+A Cappella,1,Null
+Acid Jazz,1,"Funk, Jazz"
+Album Oriented Rock,1,Rock
+Alterlatino,1,Alternative Rock
+Alternative Music,1,Null
+Alternative R&B,1,R&B
+Ambient Rock,1,Post Rock
+Anarcho Punk,1,Punk Rock
+Atmospheric Alternative/Electronic Rock,1,"Electronic, Rock"
+Aussie Rock,1,Rock
+Australian Hip Hop,1,Hip Hop
+Avant Punk,1,Punk Rock
+Avant Rock,1,Experimental Rock
+Balkan,1,Null
+Bebop,1,Jazz
+Bedroom Pop,1,Pop
+Big Band,1,"Jazz, Blues"
+Black Rock,1,Rock
+Blackened Death Metal,1,Heavy Metal
+British Blues,1,Blues
+British Rock And Roll,1,Rock And Roll
+Brown Eyed Soul,1,Soul
+Cabaret,1,Null
+California Sound,1,Null
+Canterbury Scene,1,Null
+Carnatic Music,1,Null
+Cello Rock,1,Rock
+Celtic Rock,1,Rock
+Chamber Folk,1,Folk
+Chamber Music,1,Classical
+Chanson,1,Null
+Children'S Music,1,Null
+Chill Out,1,Null
+Chillwave,1,Null
+Christian Hip Hop,1,Hip Hop
+Christmas,1,Null
+Classic Rock,1,Rock
+Classical Crossover,1,Pop
+Classical Music,1,Classical
+Comedy Punk,1,Null
+Contemporary Christian Music,1,Null
+Country Music,1,Country
+Crossover Thrash,1,Heavy Metal
+Crunkcore,1,Null
+Dancehall,1,Null
+Dark Cabaret,1,Null
+Dark Wave,1,Null
+Death/Doom,1,Heavy Metal
+Deathcore,1,Heavy Metal
+Disco Pop,1,Pop
+Doom/Death Metal,1,Heavy Metal
+Downtempo,1,Hip Hop
+Dub,1,"Electronic, Reggae"
+Dutch House,1,Null
+Easycore,1,Pop Punk
+Ebm,1,Electronic
+Electro Dream Pop,1,Pop
+Electro Funk,1,Funk
+Electro Pop,1,Pop
+Electro Rock,1,Rock
+Electronic Body Music,1,Electronic
+Europop,1,Pop
+Film Score,1,Null
+Folk Blues,1,"Folk, Blues"
+Freak Folk,1,Folk
+French House,1,Null
+Fusion,1,Null
+Garage,1,Garage Rock
+German Rock,1,Rock
+Gulf And Western,1,Null
+Gypsy Punk,1,Punk Rock
+Hauntology,1,Null
+Heavy Metal Music,1,Heavy Metal
+Horrorcore,1,Hip Hop
+Hypnagogic Pop,1,Pop
+Idm,1,Null
+Indian Classical,1,Classical
+Indian Pop,1,Pop
+Indie R&B,1,R&B
+Indiepop,1,Pop
+Electronic,1,Electronic
+Instrumental,1,Null
+J Pop,1,Pop
+Jam,1,Null
+Jazz Music,1,Jazz
+Jazz Rap,1,"Jazz, Hip Hop"
+Jesus Music,1,Null
+Klezmer,1,Null
+Latin Alternative,1,Alternative Rock
+Latin Hip Hop,1,Hip Hop
+Latin Pop,1,Pop
+Lounge,1,Null
+Lspeed Metal,1,Heavy Metal
+Madchester,1,Null
+Mafioso Rap,1,Hip Hop
+Mathcore,1,Metal
+Melodic Metalcore,1,Metal
+Melodic Rock,1,Hard Rock
+Mexican Rock,1,Rock
+Midwest Hip Hop,1,Hip Hop
+Minimalism,1,Null
+Mod Revival,1,Null
+Mor,1,Null
+Musical Theatre,1,Null
+Neoclassical,1,Classical
+New Acoustic,1,Rock
+New Prog,1,Progressive Rock
+New Rave,1,Null
+New Wave Revival,1,Post Punk
+Noise Folk,1,Folk
+Northwest Hip Hop,1,Hip Hop
+Nu Disco,1,Null
+Occult Rock,1,Rock
+Oi!,1,Punk Rock
+Opm,1,Null
+Orchestral Pop,1,Pop
+Palingsound,1,Pop
+Piano Rock,1,Rock
+Pinoy Rock,1,Rock
+Pop Country,1,"Pop, Country"
+Post Bop,1,Jazz
+Post Dubstep,1,Null
+Post Rockpost Metal,1,"Post Rock, Metal"
+Power Metal,1,Metal
+Progressive,1,Null
+Progressive Bluegrass,1,"Country, Folk, Blues"
+Progressive Death Metal,1,Heavy Metal
+Progressive Folk,1,Folk
+Proto Grunge,1,Alternative Rock
+Proto Surf Rock,1,"Rock And Roll, Rock"
+Psybient,1,Null
+Psychedelic,1,Psychedelia
+Queercore,1,Null
+Raga Rock,1,Rock
+Rap,1,Hip Hop
+Rapcore,1,Hip Hop
+Regional Mexican,1,Null
+Rock & Roll,1,Rock And Roll
+Rock En EspaÃ±ol,1,Rock
+Roots Music,1,Null
+Sadcore,1,Alternative Rock
+Slacker Rock,1,Rock
+Sophisti Pop,1,Pop
+Soul Blues,1,"Soul, Blues"
+Space Age Pop,1,Pop
+Spoken Word,1,Null
+Stoner Metal,1,Metal
+Swamp Pop,1,Pop
+Symphonic Black Metal,1,Metal
+Synth Rock,1,Rock
+Texas Blues,1,Blues
+Texas Country,1,Country
+Third Wave Ska,1,"Jazz, R&B, Reggae"
+Thrash Meta,1,Heavy Metal
+Trap,1,Hip Hop
+Trop Rock,1,Rock
+Two Tone,1,Null
+Uk Garage,1,Null
+Urban,1,Hip Hop
+"Pop, Country",1,"Pop, Country"
+Urbano,1,Null
+Vocal Jazz,1,Jazz
+Vocal Surf,1,"Rock And Roll, Rock"
+Volksmusik,1,Null
+Wonky,1,Null
+World Fusion,1,Null
+World Music,1,Null
+Acoustic,2,Rock
+Adult Alternative,2,Alternative Rock
+Alt Country,2,"Folk, Blues, Country"
+Aor,2,Rock
+Avant Funk,2,Funk
+Avant Pop,2,Pop
+Biker Metal,2,Metal
+Black Metal,2,Metal
+Bossa Nova,2,Jazz
+Bubblegum Pop,2,Pop
+Calypso,2,Null
+Ccm,2,Null
+Celtic,2,Null
+Celtic Metal,2,Metal
+Country Folk,2,"Country, Folk"
+Doom Metal,2,Metal
+Drone,2,Null
+Easy Listening,2,Null
+Electro Industrial,2,Electronic
+Electroclash,2,New Wave
+Flamenco,2,Null
+Folk Metal,2,"Folk, Metal"
+Honky Tonk,2,Country 
+Horror Punk,2,Punk Rock
+Indie Electronic,2,"Electronic, Rock"
+Industrial,2,Punk Rock
+Irish Folk,2,Folk
+Jam Rock,2,Rock
+K Pop,2,Pop
+Nederbeat,2,Null
+Neo Progressive Rock,2,Progressive Rock
+Neo Soul,2,"R&B, Soul"
+Opera,2,Null
+Operatic Pop,2,Pop
+Post Progressive,2,Progressive Rock
+Progressive Country,2,Country
+Progressive House,2,Null
+Proto Metal,2,Metal
+Proto Prog,2,Progressive Rock
+Psychedelic Funk,2,"Funk, Psychedelic Rock"
+Psychedelic Soul,2,"Funk, Psychedelic Rock"
+Sunshine Pop,2,Pop
+Surf,2,"Rock And Roll, Rock"
+Swamp Rock,2,"Rock, Blues, Folk, Country"
+Swing Revival,2,Jazz
+Technical Death Metal,2,Heavy Metal
+Teen Pop,2,Pop
+Tex Mex,2,Null
+Wagnerian Rock,2,Rock
+Alternative/Indie,3,Null
+Boogie Woogie,3,Blues
+Celtic Punk,3,Punk Rock
+College Rock,3,Rock
+Country Pop,3,"Pop, Country"
+Doo Wop,3,R&B
+Electric Blues,3,Blues
+Electro House,3,Null
+Experimental Pop,3,Pop
+Folk Punk,3,"Punk Rock, Folk"
+Glam Punk,3,Null
+Indian Rock,3,Rock
+Jump Blues,3,"Jazz, Blues"
+Latin,3,Null
+Latin Rock,3,Rock
+Math Rock,3,Progressive Rock
+Melodic Death Metal,3,Heavy Metal
+Merseybeat,3,Rock And Roll
+Neue Deutsche HÃ¤rte,3,Null
+New Age,3,Electronic
+Outlaw Country,3,Country
+Post Metal,3,Metal
+Sludge Metal,3,Metal
+Southern Metal,3,Metal
+Street Punk,3,Punk Rock
+Surf Rock,3,"Rock And Roll, Rock"
+Swing,3,Jazz
+Traditional Pop,3,Pop
+Yacht Rock,3,Soft Rock
+Acoustic Rock,4,Rock
+Alternative,4,Alternative Rock
+Anti Folk,4,Null
+Avant Garde Metal,4,Metal
+Chicano Rock,4,Rock
+Christian Rock,4,Rock
+Electronicore,4,"Electronic, Heavy Metal"
+Folk Pop,4,"Folk, Pop"
+Geek Rock,4,Alternative Rock
+House,4,Null
+Indie,4,Null
+Progressive Soul,4,"R&B, Soul"
+Symphonic Rock,4,Progressive Rock
+Worldbeat,4,Pop Rock
+Alternative Hip Hop,5,Hip Hop
+Avant Garde,5,Null
+Chamber Pop,5,"Rock, Indie Rock, Indie Pop"
+Christian Metal,5,Metal
+Comedy Rock,5,Rock
+Cowpunk,5,"Punk Rock, Folk, Country"
+Edm,5,Electronic
+Garage Punk,5,Garage Rock
+Garage Rock Revival,5,Garage Rock
+Indietronica,5,"Electronic, Rock"
+Psychobilly,5,"Rock And Roll, R&B, Punk Rock"
+Pub Rock,5,"Rock And Roll, Rock"
+Schlager,5,"Pop, Rock And Roll"
+Shoegazing,5,"Alternative Rock, Neo Psychedelia"
+Stoner Rock,5,Psychedelic Rock
+Adult Contemporary,6,"Soft Rock, Pop Rock, Soul, R&B"
+Alternative Dance,6,"Alternative Rock, Indie Rock"
+Folktronica,6,Folk
+Jazz Rock,6,"Jazz, Rock"
+Neoclassical Metal,6,Heavy Metal
+Punk Blues,6,"Punk Rock, Blues"
+Shock Rock,6,Rock
+Shoegaze,6,"Alternative Rock, Neo Psychedelia"
+Speed Metal,6,Heavy Metal
+Symphonic Metal,6,Heavy Metal
+Trip Hop,6,Hip Hop
+World,6,Null
+Alternative Country,7,"Folk, Blues, Country"
+Beat,7,Rock And Roll
+Classical,7,Classical
+Dance,7,Null
+Death Metal,7,Heavy Metal
+Jam Band,7,Null
+Noise Pop,7,"Alternative Rock, Indie Pop"
+Reggae Rock,7,"Reggae, Rock"
+Screamo,7,Hardcore Punk
+Art Punk,8,Punk Rock
+Lo Fi,8,Null
+Post Britpop,8,"Alternative Rock, Indie Pop"
+Progressive Pop,8,Pop
+Skate Punk,8,"Punk Rock, Hardcore Punk"
+Space Rock,8,"Progressive Rock, Psychedelic Rock"
+Bluegrass,9,"Country, Folk, Blues"
+Gospel,9,Null
+Gothic Metal,9,Metal
+Industrial Rock,9,"Rock, Experimental Rock"
+Noise Rock,9,"Punk Rock, Experimental Rock"
+Psychedelia,9,Psychedelia
+Psychedelic Folk,9,"Folk, Psychedelia"
+Britpop,10,"Alternative Rock, Indie Pop"
+Dance Punk,10,"Funk, Post Punk"
+Disco,10,Disco
+Melodic Hardcore,10,Hardcore Punk
+Rap Metal,10,"Heavy Metal, Hip Hop"
+Ska,10,"Jazz, R&B, Reggae"
+Synthpop,10,New Wave
+Ambient,11,Null
+Boogie Rock,11,Blues Rock
+Emo Pop,11,"Hardcore Punk, Pop Punk"
+Dance Pop,12,"Pop, New Wave, Disco"
+Electronica,12,Electronic
+Jangle Pop,12,"Pop, Folk Rock"
+Proto Punk,12,Garage Rock
+Rhythm And Blues,12,R&B
+Dance Rock,13,"Pop Rock, Post Punk"
+Funk Metal,13,"Funk, Rock, Heavy Metal"
+Gothic Rock,13,Post Punk
+Groove Metal,13,Heavy Metal
+Instrumental Rock,13,Null
+Reggae,13,Reggae
+Baroque Pop,14,"Rock, Classical"
+Dream Pop,14,"Alternative Rock, Neo Psychedelia"
+Experimental,14,Null
+Funk,14,Funk
+Ska Punk,14,"Jazz, R&B, Reggae, Punk Rock"
+Thrash Metal,14,Heavy Metal
+Electronic Rock,15,"Electronic, Rock"
+Funk Rock,15,"Funk, Rock"
+Industrial Metal,15,"Rock, Experimental Rock, Heavy Metal"
+Psychedelic Pop,15,"Pop, Psychedelia"
+Rap Rock,15,"Rock, Hip Hop"
+Heartland Rock,16,"Rock, Blues Rock, Folk Rock, Country Rock"
+Jazz Fusion,16,"Jazz, Rock, Funk, R&B"
+Arena Rock,17,Hard Rock
+Art Pop,18,Pop
+Electropop,18,"Electronic, Pop"
+Hardcore Punk,18,Hardcore Punk
+Neo Psychedelia,18,Neo Psychedelia
+Post Rock,18,Post Rock
+Blue Eyed Soul,19,"R&B, Soul"
+Hip Hop,19,Hip Hop
+Post Punk Revival,19,Post Punk
+Grunge,20,"Punk Rock, Heavy Metal"
+Experimental Rock,21,Experimental Rock
+Glam Rock,22,"Rock And Roll, Hard Rock"
+Roots Rock,22,"Rock, Blues Rock, Folk Rock, Country Rock"
+Indie Folk,23,"Indie Rock, Folk"
+Jazz,23,Jazz
+Americana,24,"Folk, Blues, Country"
+Electronic,24,Electronic
+Metalcore,24,Heavy Metal
+Progressive Metal,26,Heavy Metal
+Rockabilly,26,"Rock And Roll, R&B"
+Acid Rock,27,Psychedelic Rock
+Synth Pop,28,New Wave
+Southern Rock,30,Country Rock
+Garage Rock,33,Garage Rock
+Power Pop,34,Pop Rock
+Emo,37,Hardcore Punk
+Soul,37,Soul
+Post Hardcore,39,Hardcore Punk
+Post Punk,39,Post Punk
+Country Rock,42,Country Rock
+Blues,46,Blues
+Glam Metal,50,Heavy Metal
+Nu Metal,50,Heavy Metal
+R&B,52,R&B
+Rock And Roll,52,Rock And Roll
+Art Rock,53,Progressive Rock
+Country,55,Country
+Pop Punk,55,Pop Punk
+Post Grunge,55,Post Grunge
+Folk,59,Folk
+New Wave,59,New Wave
+Progressive Rock,63,Progressive Rock
+Punk Rock,64,Punk Rock
+Soft Rock,64,Soft Rock
+Indie Pop,68,Indie Pop
+Psychedelic Rock,77,Psychedelic Rock
+Folk Rock,82,Folk Rock
+Alternative Metal,100,Alternative Metal
+Blues Rock,101,Blues Rock
+Heavy Metal,133,Heavy Metal
+Pop,144,Pop
+Indie Rock,149,Indie Rock
+Rock,171,Rock
+Pop Rock,172,Pop Rock
+Hard Rock,263,Hard Rock
+Alternative Rock,287,Alternative Rock
