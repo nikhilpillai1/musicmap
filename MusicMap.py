@@ -6,13 +6,16 @@ import folium.plugins
 from geopy.geocoders import ArcGIS
 from branca.element import Template, MacroElement
 from pandas.core.dtypes.missing import isnull
+from folium.features import CustomIcon
 
 # Reading the data
 
-df1 = pd.read_csv('Rock Music/MTV_RockMusic.csv')
-df_booking = pd.read_csv('Rock Music/bookings.csv')
+df1 = pd.read_csv('MTV_RockMusic.csv')
+df_booking = pd.read_csv('bookings.csv')
 
 df1 = df1.merge(df_booking, on='Name', how='left')
+df1['Booking'][20] = df_booking[df_booking['Name'] == 'AC/DC']['Booking']
+
 df1.head()
 
 
@@ -26,8 +29,6 @@ df1["Genre"] = df1['Genre'].str.title()
 df1["Genre"] = df1["Genre"].replace("-", ' ', regex = True)
 df1["Genre"] = df1["Genre"].replace("Music", '', regex = True)
 df1["Active"] = df1["Active"].replace("\n", ', ', regex = True)
-# df1["SpotifyName"] = df1["Name"].replace(" ", '%20', regex = True)
-# df1["YoutubeName"] = df1["Name"].replace(" ", '+', regex = True)
 df1['Period'] = df1['Active'].str[:3] + "0s"
 
 ######## Reducing the number of genres
@@ -37,7 +38,7 @@ df2['Genre'] = df2['Genre'].str.split(',')
 df2 = df2.explode('Genre').reset_index(drop=True)
 df2['Genre'] = df2['Genre'].str.strip()
 
-df_genre = pd.read_csv('Rock Music/Genre_Delete.csv')
+df_genre = pd.read_csv('Genre_Delete.csv')
 df_genre["Replacement"] = df_genre["Replacement"].replace("Null", '', regex = True)
 
 df3 = df2.merge(df_genre, on='Genre', how='left')
@@ -70,12 +71,35 @@ locations = df_final[['Latitude', 'Longitude']]
 locationlist = locations.values.tolist()
 
 
-df_final.to_csv('Rock Music/MTV_RockMusicFinal.csv')
-df_final.tail()
-df_final['Active']
+# df_final.to_csv('MTV_RockMusicFinal.csv')
+# df_final.tail()
+# df_final['Active']
 
 
 ####### Plotting map
+
+# def color_producer(period):
+#   if period == '1920s':
+#     return 'lightgray'
+#   elif period == '1930s':
+#     return 'purple'
+#   elif period == '1940s':
+#     return 'lightblue'
+#   elif period == '1950s':
+#     return 'orange'
+#   elif period == '1960s':
+#     return 'pink'
+#   elif period == '1970s':
+#     return 'darkblue'
+#   elif period == '1980s':
+#     return 'red'
+#   elif period == '1990s':
+#     return 'lightgreen'
+#   elif period == '2000s':
+#     return 'beige'
+#   else:
+#     return 'cadetblue'
+
 
 html_popup = """
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,16 +110,13 @@ html_popup = """
 <a href="https://www.youtube.com/results?search_query=%s" target="_blank"><i class="fa fa-youtube-play" style="font-size:35px;color:red;"></i></a>
 &nbsp&nbsp
 <a href = "https://music.apple.com/us/search?term=%s" target="_blank"><i class="fa fa-apple" style="font-size:35px;color:black;"></i></a><br>
-Genres: %s <br><br>
+<p style="font-size:12px"> Genres: %s <br><br></p>
 <b><a href = "%s" target="_blank"> Website </a>
 &nbsp●&nbsp
 <a href = "%s" target="_blank"> Booking </a>
 &nbsp●&nbsp
 <a href = "https://www.rollingstone.com/results/#?q=%s" target="_blank"> News </a></b>
 """
-
-icon_path = r'Rock Music/Icons/%s%s.png' 
-# legend = 'Rock Music/Icons/Legend.png'
 
 map = folium.Map(location=[40.866667, 34.566667], tiles = 'CartoDB dark_matter', zoom_start=2, min_zoom=1.5, max_bounds=True)
 
@@ -192,10 +213,75 @@ for point in range(0, len(locationlist)):
     for i in range(len(genre_check), 0, -1):
         for j in range(i-1, -1, -1):
             if genre_check[j] in df_final['Substitute'][point]:
-                iframe_popup = folium.IFrame(html=html_popup % (df_final['Name'][point], df_final['Name'][point].replace(" ", '%20'), df_final['Name'][point].replace(" ", '+'), df_final['Name'][point].replace(" ", '%20'), df_final['Genre'][point], df_final['website'][point], df_final['Booking'][point], df_final['Name'][point].replace(" ", '%20')), width=240, height=185)
+                if df_final['Type'][point] == 'Artist':
+                    if df_final['Period'][point] == '1920s':
+                        icon = CustomIcon("https://i.ibb.co/6XFpfCf/Artist1920s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1930s':
+                        icon = CustomIcon("https://i.ibb.co/V2G1qMv/Artist1930s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1940s':
+                        icon = CustomIcon("https://i.ibb.co/17r7sH6/Artist1940s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1950s':
+                        icon = CustomIcon("https://i.ibb.co/fq00vq8/Artist1950s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1960s':
+                        icon = CustomIcon("https://i.ibb.co/N1qd5r7/Artist1960s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1970s':
+                        icon = CustomIcon("https://i.ibb.co/b7DkBhK/Artist1970s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1980s':
+                        icon = CustomIcon("https://i.ibb.co/pRGyz38/Artist1980s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1990s':
+                        icon = CustomIcon("https://i.ibb.co/RHxLBvC/Artist1990s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '2000s':
+                        icon = CustomIcon("https://i.ibb.co/w4dV6cY/Artist2000s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    else:
+                        icon = CustomIcon("https://i.ibb.co/b2RvgGY/Artist2010s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                elif df_final['Type'][point] == 'Band':
+                    if df_final['Period'][point] == '1920s':
+                        icon = CustomIcon("https://i.ibb.co/PWdzDVt/Band1920s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1930s':
+                        icon = CustomIcon("https://i.ibb.co/ZMH6cPx/Band1930s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1940s':
+                        icon = CustomIcon("https://i.ibb.co/CskcTRp/Band1940s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1950s':
+                        icon = CustomIcon("https://i.ibb.co/GvFJ9KB/Band1950s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1960s':
+                        icon = CustomIcon("https://i.ibb.co/5hR6pN3/Band1960s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1970s':
+                        icon = CustomIcon("https://i.ibb.co/2y8wjGy/Band1970s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1980s':
+                        icon = CustomIcon("https://i.ibb.co/5rwXB4V/Band1980s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '1990s':
+                        icon = CustomIcon("https://i.ibb.co/1Tq0ry0/Band1990s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    elif df_final['Period'][point] == '2000s':
+                        icon = CustomIcon("https://i.ibb.co/Y7fx4VR/Band2000s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                    else:
+                        icon = CustomIcon("https://i.ibb.co/n3tPscx/Band2010s.png",icon_size=(35, 35),popup_anchor=(5, -12))
+                else:
+                    if df_final['Period'][point] == '1920s':
+                        icon = CustomIcon("https://i.ibb.co/dkpshF8/Duo1920s.png",icon_size=(35, 35),popup_anchor=(14, -12))
+                    elif df_final['Period'][point] == '1930s':
+                        icon = CustomIcon("https://i.ibb.co/LppbkwY/Duo1930s.png",icon_size=(35, 35),popup_anchor=(14, -12))
+                    elif df_final['Period'][point] == '1940s':
+                        icon = CustomIcon("https://i.ibb.co/z571X3r/Duo1940s.png",icon_size=(35, 35),popup_anchor=(14, -12))
+                    elif df_final['Period'][point] == '1950s':
+                        icon = CustomIcon("https://i.ibb.co/h19cxzf/Duo1950s.png",icon_size=(35, 35),popup_anchor=(14, -12))
+                    elif df_final['Period'][point] == '1960s':
+                        icon = CustomIcon("https://i.ibb.co/KNv95TS/Duo1960s.png",icon_size=(35, 35),popup_anchor=(14, -12))
+                    elif df_final['Period'][point] == '1970s':
+                        icon = CustomIcon("https://i.ibb.co/L0KWZqv/Duo1970s.png",icon_size=(35, 35),popup_anchor=(14, -12))
+                    elif df_final['Period'][point] == '1980s':
+                        icon = CustomIcon("https://i.ibb.co/2Zc11dZ/Duo1980s.png",icon_size=(35, 35),popup_anchor=(14, -12))
+                    elif df_final['Period'][point] == '1990s':
+                        icon = CustomIcon("https://i.ibb.co/rtZ7LLj/Duo1990s.png",icon_size=(35, 35),popup_anchor=(14, -12))
+                    elif df_final['Period'][point] == '2000s':
+                        icon = CustomIcon("https://i.ibb.co/cF8cVty/Duo2000s.png",icon_size=(35, 35),popup_anchor=(14, -12))
+                    else:
+                        icon = CustomIcon("https://i.ibb.co/02m0qYb/Duo2010s.png",icon_size=(38, 38),icon_anchor=(22, 94),popup_anchor=(-3, -76))
+                iframe_popup = folium.IFrame(html=html_popup % (df_final['Name'][point], df_final['Name'][point].replace(" ", '%20'), df_final['Name'][point].replace(" ", '+'), df_final['Name'][point].replace(" ", '%20'), df_final['Genre'][point], df_final['Website'][point], df_final['Booking'][point], df_final['Name'][point].replace(" ", '%20')), width=240, height=185)
                 tool = folium.Tooltip(text= df_final['Name'][point] + ' (' + df_final['Active'][point] + ')', style=("font-family: arial; font-size: 14px; padding: 10px;"), sticky= False)
-                folium.Marker(locationlist[point], tooltip=tool,  popup=folium.Popup(iframe_popup), icon=folium.features.CustomIcon(icon_image=icon_path % (df_final['Type'][point], df_final['Period'][point]), icon_size=(32, 32))).add_to(variables[j])
+                folium.Marker(locationlist[point], tooltip=tool,  popup=folium.Popup(iframe_popup), icon = icon).add_to(variables[j])
             break
+
+# folium.Marker(locationlist[point], tooltip=tool,  popup=folium.Popup(iframe_popup), icon=folium.features.CustomIcon(icon_image=icon_path % (df_final['Type'][point], df_final['Period'][point]), icon_size=(32, 32))).add_to(variables[j])
 
 
 l = folium.LayerControl().add_to(map)
@@ -239,7 +325,7 @@ template = """
  
 <div id='maplegend' class='maplegend' 
     style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 0.8);
-     border-radius:6px; padding: 10px; font-size:14px; right: 1440px; bottom: 20px;'>
+     border-radius:6px; padding: 10px; font-size:14px; margin-left: 30px; bottom: 20px;'>
      
 <div class='legend-title'>Legend</div>
 <div class='legend-scale'>
@@ -254,6 +340,9 @@ template = """
     <li><span style='background:#ffff00;opacity:0.8;'></span>1990</li>
     <li><span style='background:#00ff00;opacity:0.8;'></span>2000</li>
     <li><span style='background:#00cccc;opacity:0.8;'></span>2010</li>
+    <li><img src="https://i.ibb.co/L0yCTkP/Artist.png" width="20" height="20">&nbsp&nbsp&nbsp&nbsp&nbspArtist</li>
+    <li><img src="https://i.ibb.co/7rmMyyN/Band.png" width="20" height="20">&nbsp&nbsp&nbsp&nbsp&nbspBand</li> 
+    <li><img src="https://i.ibb.co/C6TbKbZ/Duo.png" width="20" height="20">&nbsp&nbsp&nbsp&nbsp&nbspDuo</li>
   </ul>
 </div>
 </div>
@@ -293,11 +382,11 @@ template = """
     }
   .maplegend .legend-source {
     font-size: 80%;
-    color: #777;
+    color: #ffffff;
     clear: both;
     }
   .maplegend a {
-    color: #777;
+    color: #ffffff;
     }
 </style>
 {% endmacro %}"""
@@ -306,36 +395,6 @@ macro = MacroElement()
 macro._template = Template(template)
 map.get_root().add_child(macro)
 
-fname = 'Rock Music/MusicMap.html'
+fname = 'MusicMap.html'
 map.save(fname)
-
-####Image Legend
-# rose = """\
-#     var rose = L.control({{position: 'bottomleft'}});
-
-#     rose.onAdd = function (map) {{
-#     var div = L.DomUtil.create('div', 'info rose');
-#         div.innerHTML +=
-#         '<img src="https://i.ibb.co/877rKX3/Legend.png" alt="rose" width="180px" height="220px">';
-#     return div;
-#     }};
-#     rose.addTo({});""".format(map.get_name())
-
-
-    
-
-# def inject_code(fname, text):
-#     with open(fname, 'r') as f:
-#         lines = f.readlines()
-#     end = 0
-#     for k, line in enumerate(lines):
-#         if '</script>' in line:
-#             end = max(end, k)
-#     lines.insert(end-1, rose)
-    
-#     with open(fname, 'w') as f:
-#         f.writelines(lines)
-
-# inject_code(fname, rose)
-# inline_map(fname)
 
