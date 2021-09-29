@@ -7,6 +7,8 @@ from geopy.geocoders import ArcGIS
 from branca.element import Template, MacroElement
 from pandas.core.dtypes.missing import isnull
 from folium.features import CustomIcon
+import geojson
+import geopandas
 
 # Reading the data
 
@@ -55,7 +57,7 @@ df3 = df3.groupby(['Name','Type']).agg({'Genre': lambda x: ",".join(x)})
 df_final = df3.merge(df1, on='Name', how='left')
 df_final.sort_values("Name", inplace = True)  #, key=lambda col: col.str.lower())
 df_final.rename(columns={'Genre_y':'Genre', 'Genre_x':'Substitute', 'website':'Website'}, inplace=True)
-df_final['Substitute'] = df_final['Substitute'] + ','
+# df_final['Substitute'] = df_final['Substitute'] + ','
 
 
 
@@ -70,6 +72,26 @@ df_final['Longitude'] = df_final['Coordinates'].apply(lambda x: x.longitude if x
 locations = df_final[['Latitude', 'Longitude']]
 locationlist = locations.values.tolist()
 
+####### Creating json file for search
+
+def data2geojson(df):
+    features = []
+    insert_features = lambda X: features.append(
+            geojson.Feature(geometry=geojson.Point((X["Longitude"],
+                                                    X["Latitude"])),
+                            properties=dict(name=X["Name"],
+                                            type=X["Type"],
+                                            genre=X['Genre'],
+                                            location=X['Location'])))
+    df.apply(insert_features, axis=1)
+    with open('data_json.geojson', 'w', encoding='utf8') as fp:
+        geojson.dump(geojson.FeatureCollection(features), fp, sort_keys=True, ensure_ascii=False)
+
+cols = ['Name', 'Type', 'Genre', 'Location', 'Latitude', 'Longitude']
+df_json = df_final[cols]
+data2geojson(df_json)
+
+df_geojson = geopandas.read_file('data_json.geojson', driver="GeoJSON",)
 
 # df_final.to_csv('MTV_RockMusicFinal.csv')
 # df_final.tail()
@@ -77,29 +99,6 @@ locationlist = locations.values.tolist()
 
 
 ####### Plotting map
-
-# def color_producer(period):
-#   if period == '1920s':
-#     return 'lightgray'
-#   elif period == '1930s':
-#     return 'purple'
-#   elif period == '1940s':
-#     return 'lightblue'
-#   elif period == '1950s':
-#     return 'orange'
-#   elif period == '1960s':
-#     return 'pink'
-#   elif period == '1970s':
-#     return 'darkblue'
-#   elif period == '1980s':
-#     return 'red'
-#   elif period == '1990s':
-#     return 'lightgreen'
-#   elif period == '2000s':
-#     return 'beige'
-#   else:
-#     return 'cadetblue'
-
 
 html_popup = """
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -281,12 +280,30 @@ for point in range(0, len(locationlist)):
                 folium.Marker(locationlist[point], tooltip=tool,  popup=folium.Popup(iframe_popup), icon = icon).add_to(variables[j])
             break
 
-# folium.Marker(locationlist[point], tooltip=tool,  popup=folium.Popup(iframe_popup), icon=folium.features.CustomIcon(icon_image=icon_path % (df_final['Type'][point], df_final['Period'][point]), icon_size=(32, 32))).add_to(variables[j])
 
+bandGeo = folium.GeoJson(
+    df_geojson,
+    name="Bands",
+    show=False,
+    tooltip=folium.GeoJsonTooltip(
+        fields=["name", "genre"], aliases=["Name", "Genre"], localize=True
+    ),
+).add_to(map)
+
+bandSearch = folium.plugins.Search(
+    layer=bandGeo,
+    geom_type="Point",
+    placeholder="Enter Band Name",
+    collapsed=True,
+    search_label="name",
+).add_to(map)
 
 l = folium.LayerControl().add_to(map)
 mini_map = folium.plugins.MiniMap(tile_layer='CartoDB dark_matter', width=125, height=125, toggle_display = True).add_to(map)
-# search = folium.plugins.Search(mcg).add_to(map)
+user_loc = folium.plugins.LocateControl(auto_start=False, 
+strings={"title" : "Check Out Bands From Your Area", "popup":"Your Location"}
+).add_to(map)
+
 
 
 ####HTML Legend
@@ -325,7 +342,7 @@ template = """
  
 <div id='maplegend' class='maplegend' 
     style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 0.8);
-     border-radius:6px; padding: 10px; font-size:14px; margin-left: 30px; bottom: 20px;'>
+     border-radius:6px; padding: 10px; font-size:14px; margin-left: 10px; bottom: 10px;'>
      
 <div class='legend-title'>Legend</div>
 <div class='legend-scale'>
@@ -397,4 +414,3 @@ map.get_root().add_child(macro)
 
 fname = 'MusicMap.html'
 map.save(fname)
-
