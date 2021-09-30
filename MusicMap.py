@@ -74,22 +74,22 @@ locationlist = locations.values.tolist()
 
 ####### Creating json file for search
 
-def data2geojson(df):
-    features = []
-    insert_features = lambda X: features.append(
-            geojson.Feature(geometry=geojson.Point((X["Longitude"],
-                                                    X["Latitude"])),
-                            properties=dict(name=X["Name"],
-                                            type=X["Type"],
-                                            genre=X['Genre'],
-                                            location=X['Location'])))
-    df.apply(insert_features, axis=1)
-    with open('data_json.geojson', 'w', encoding='utf8') as fp:
-        geojson.dump(geojson.FeatureCollection(features), fp, sort_keys=True, ensure_ascii=False)
+# def data2geojson(df):
+#     features = []
+#     insert_features = lambda X: features.append(
+#             geojson.Feature(geometry=geojson.Point((X["Longitude"],
+#                                                     X["Latitude"])),
+#                             properties=dict(name=X["Name"],
+#                                             type=X["Type"],
+#                                             genre=X['Genre'],
+#                                             location=X['Location'])))
+#     df.apply(insert_features, axis=1)
+#     with open('data_json.geojson', 'w', encoding='utf8') as fp:
+#         geojson.dump(geojson.FeatureCollection(features), fp, sort_keys=True, ensure_ascii=False)
 
-cols = ['Name', 'Type', 'Genre', 'Location', 'Latitude', 'Longitude']
-df_json = df_final[cols]
-data2geojson(df_json)
+# cols = ['Name', 'Type', 'Genre', 'Location', 'Latitude', 'Longitude']
+# df_json = df_final[cols]
+# data2geojson(df_json)
 
 df_geojson = geopandas.read_file('data_json.geojson', driver="GeoJSON",)
 
@@ -114,7 +114,7 @@ html_popup = """
 &nbsp●&nbsp
 <a href = "%s" target="_blank"> Booking </a>
 &nbsp●&nbsp
-<a href = "https://www.rollingstone.com/results/#?q=%s" target="_blank"> News </a></b>
+<a href = "https://news.google.com/search?q=%s" target="_blank"> News </a></b>
 """
 
 map = folium.Map(location=[40.866667, 34.566667], tiles = 'CartoDB dark_matter', zoom_start=2, min_zoom=1.5, max_bounds=True)
@@ -293,7 +293,7 @@ bandGeo = folium.GeoJson(
 bandSearch = folium.plugins.Search(
     layer=bandGeo,
     geom_type="Point",
-    placeholder="Enter Band Name",
+    placeholder="Enter Artist/Band Name",
     collapsed=True,
     search_label="name",
 ).add_to(map)
